@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Dark tones — ONLY for Hero, CTA banners, Footer */
+  --bg-dark: #130E29;
+  --bg-dark-secondary: #17254E;
+
+  /* Light tones — used for MOST sections now */
+  --bg: #FFFFFF;
+  --bg-secondary: #F7F5FB;
+  --bg-tertiary: #EFEAF7;
+
+  /* Accent — same everywhere */
+  --accent: #CA6BE6;
+  --accent-secondary: #5E4195;
+  --accent-dark: #A24FC4;
+  --accent-bg: rgba(202, 107, 230, 0.10);
+  --shadow: rgba(202, 107, 230, 0.25);
+  --gradient: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+
+  /* Text on LIGHT backgrounds (default now) */
+  --text-h: #130E29;
+  --text: #4A4258;
+  --text-muted: #7A7290;
+
+  /* Text on DARK backgrounds (Hero, CTA, Footer) */
+  --text-h-dark: #FFFFFF;
+  --text-dark: #C9C3DE;
+  --text-muted-dark: #8B85A8;
+
+  --border: rgba(19, 14, 41, 0.1);
+  --border-dark: rgba(255, 255, 255, 0.1);
+
+  /* Cards */
+  --card-bg: #FFFFFF;
+  --card-text: #130E29;
+  --card-text-muted: rgba(19, 14, 41, 0.65);
+  --card-border: rgba(19, 14, 41, 0.08);
+
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --display: 'Space Grotesk', 'Inter', sans-serif;
+  --heading: var(--display);
+  --mono: ui-monospace, Consolas, monospace;
+  --code-bg: rgba(19, 14, 41, 0.06);
+
+  font-family: var(--sans);
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 1.15;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--text-h);
+  background: var(--code-bg);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--sans);
+}
+
+/* Text-white utility — ALWAYS literal white, regardless of theme.
+   Use this on headings sitting over a dark section (Hero, Who We Are
+   photo overlay, CTA banners, Footer) since --text-h now means
+   "dark" by default in the light-first theme. */
+.text-white {
+  color: #0b0b0b !important;
+}

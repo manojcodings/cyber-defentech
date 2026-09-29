@@ -1,0 +1,398 @@
+/* =========================================================
+   Floating Enquiry Form — Premium Slide Panel
+   Compatible with the updated FloatingForm.jsx component
+========================================================= */
+
+.floating-form-wrapper,
+.floating-form-wrapper *,
+.floating-form-wrapper *::before,
+.floating-form-wrapper *::after {
+  box-sizing: border-box;
+}
+
+.floating-form-wrapper {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  right: 0;
+  display: flex;
+  align-items: center;
+  transform: translateY(-50%);
+  font-family: var(--sans, inherit);
+}
+
+/* Decorative glow behind the tab */
+.floating-form-wrapper::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: -22px;
+  width: 70px;
+  height: 220px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: rgba(202, 107, 230, 0.25);
+  filter: blur(25px);
+  pointer-events: none;
+}
+
+/* =========================
+   Floating Tab
+========================= */
+
+.floating-tab {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 45px;
+  min-height: 156px;
+  padding: 17px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-right: 0;
+  border-radius: 15px 0 0 15px;
+  outline: none;
+  background: linear-gradient(160deg, #ca6be6 0%, #a451c2 48%, #b4872f 100%);
+  color: #130e29;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.10em;
+  line-height: 1;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  cursor: pointer;
+  box-shadow: -7px 0 25px rgba(0, 0, 0, 0.25), inset 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition: width 220ms ease, filter 220ms ease, box-shadow 220ms ease;
+}
+
+.floating-tab:hover {
+  width: 49px;
+  filter: brightness(1.08);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.30), 0 0 20px rgba(202, 107, 230, 0.24);
+}
+
+.floating-tab:focus-visible {
+  outline: 3px solid rgba(202, 107, 230, 0.65);
+  outline-offset: 4px;
+}
+
+.floating-tab-icon {
+  display: inline-flex;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.floating-tab-text {
+  white-space: nowrap;
+}
+
+/* =========================
+   Panel
+========================= */
+
+.floating-form-panel {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  right: 56px;
+  width: min(370px, calc(100vw - 82px));
+  max-height: calc(100vh - 32px);
+  padding: 27px 25px 23px;
+  overflow-y: auto;
+  border: 1px solid rgba(180, 135, 47, 0.34);
+  border-radius: 21px;
+  outline: none;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.018)),
+    var(--bg-secondary, #17132d);
+  box-shadow: -18px 22px 65px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(202, 107, 230, 0.035);
+  color: var(--text, #d9d9e5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(32px, -50%);
+  visibility: hidden;
+  transition: opacity 250ms ease, transform 280ms ease, visibility 280ms ease;
+  scrollbar-color: rgba(180, 135, 47, 0.55) transparent;
+  scrollbar-width: thin;
+}
+
+.floating-form-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 25px;
+  left: 25px;
+  height: 3px;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(90deg, #ca6be6, #b4872f);
+}
+
+.floating-form-panel::after {
+  content: "";
+  position: absolute;
+  right: -85px;
+  bottom: -100px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(202, 107, 230, 0.12);
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+.floating-form-wrapper.open .floating-form-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(0, -50%);
+  visibility: visible;
+}
+
+/* Panel heading */
+.floating-form-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.floating-form-heading {
+  min-width: 0;
+}
+
+.floating-form-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
+  color: #d5a94e;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.floating-form-kicker svg {
+  color: #ca6be6;
+  font-size: 11px;
+}
+
+.floating-form-heading h2 {
+  margin: 0 0 8px;
+  color: var(--text-h, #ffffff);
+  font-size: 26px;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.floating-form-heading p {
+  max-width: 245px;
+  margin: 0;
+  color: var(--text, #d9d9e5);
+  font-size: 12.5px;
+  line-height: 1.6;
+  opacity: 0.72;
+}
+
+.floating-form-badge {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border: 1px solid rgba(180, 135, 47, 0.35);
+  border-radius: 11px;
+  background: rgba(180, 135, 47, 0.10);
+  color: #d5a94e;
+  font-size: 13px;
+  transform: rotate(-45deg);
+}
+
+/* Form */
+.floating-enquiry-form {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 13px;
+}
+
+.floating-field {
+  display: grid;
+  gap: 7px;
+}
+
+.floating-field label {
+  color: var(--text-h, #ffffff);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+
+.floating-field input,
+.floating-field select {
+  width: 100%;
+  min-height: 45px;
+  padding: 0 13px;
+  border: 1px solid rgba(180, 135, 47, 0.28);
+  border-radius: 9px;
+  outline: none;
+  background: rgba(0, 0, 0, 0.16);
+  color: var(--text-h, #ffffff);
+  font: inherit;
+  font-size: 12.5px;
+  transition: border-color 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.floating-field select {
+  cursor: pointer;
+}
+
+.floating-field input::placeholder {
+  color: var(--text, #d9d9e5);
+  opacity: 0.48;
+}
+
+.floating-field select option {
+  background: #17132d;
+  color: #ffffff;
+}
+
+.floating-field input:focus,
+.floating-field select:focus {
+  border-color: rgba(202, 107, 230, 0.78);
+  background: rgba(0, 0, 0, 0.23);
+  box-shadow: 0 0 0 4px rgba(202, 107, 230, 0.10);
+}
+
+.floating-submit-btn,
+.floating-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease, background 200ms ease;
+}
+
+.floating-submit-btn {
+  margin-top: 4px;
+  background: linear-gradient(135deg, #ca6be6, #b4872f);
+  color: #130e29;
+}
+
+.floating-submit-btn:hover,
+.floating-reset-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 10px 22px rgba(180, 135, 47, 0.24);
+}
+
+.floating-form-note {
+  margin: 1px 0 0;
+  color: var(--text, #d9d9e5);
+  font-size: 10.5px;
+  line-height: 1.4;
+  text-align: center;
+  opacity: 0.52;
+}
+
+/* Success message */
+.floating-success {
+  position: relative;
+  z-index: 1;
+  padding: 24px 7px 5px;
+  text-align: center;
+}
+
+.floating-success > svg {
+  margin-bottom: 13px;
+  color: #b4872f;
+  font-size: 38px;
+}
+
+.floating-success h3 {
+  margin: 0 0 7px;
+  color: var(--text-h, #ffffff);
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.floating-success p {
+  margin: 0 0 20px;
+  color: var(--text, #d9d9e5);
+  font-size: 12.5px;
+  opacity: 0.72;
+}
+
+.floating-reset-btn {
+  width: 100%;
+  border-color: rgba(180, 135, 47, 0.38);
+  background: rgba(180, 135, 47, 0.10);
+  color: var(--text-h, #ffffff);
+}
+
+.floating-reset-btn:hover {
+  background: rgba(202, 107, 230, 0.16);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .floating-tab {
+    width: 40px;
+    min-height: 135px;
+    padding: 14px 8px;
+    border-radius: 12px 0 0 12px;
+    font-size: 10px;
+  }
+
+  .floating-form-panel {
+    right: 48px;
+    width: min(350px, calc(100vw - 64px));
+    padding: 24px 19px 20px;
+    border-radius: 17px;
+  }
+}
+
+@media (max-width: 380px) {
+  .floating-form-panel {
+    right: 44px;
+    width: calc(100vw - 54px);
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .floating-form-heading h2 {
+    font-size: 23px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-form-panel,
+  .floating-tab,
+  .floating-submit-btn,
+  .floating-reset-btn {
+    transition: none;
+  }
+
+  .floating-tab:hover,
+  .floating-submit-btn:hover,
+  .floating-reset-btn:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,138 @@
+/* ============================================================
+   Partner Detail Page — CyberDefentech
+   ============================================================ */
+
+.pd-page {
+  min-height: 70vh;
+  padding: 60px 20px 100px;
+  background: var(--bg);
+}
+
+.pd-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ---- Back link ---- */
+.pd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  transition: opacity 0.2s ease;
+}
+
+.pd-back:hover {
+  opacity: 0.75;
+}
+
+/* ---- Title / subtitle ---- */
+.pd-title {
+  font-family: var(--display);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-h);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.pd-subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+/* ---- Certification list ---- */
+.pd-cert-list {
+  list-style: none;
+  margin: 0 0 48px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.pd-cert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pd-cert-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--shadow);
+}
+
+.pd-cert-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+/* ---- CTA ---- */
+.pd-cta {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--accent);
+}
+
+.pd-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.pd-btn-primary {
+  background: var(--accent);
+  color: #130E29;
+  border: 1px solid transparent;
+}
+
+.pd-btn-primary:hover {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ---- Not found state ---- */
+.pd-notfound {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.pd-notfound h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: var(--text-h);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .pd-cert-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-title {
+    font-size: 26px;
+  }
+}

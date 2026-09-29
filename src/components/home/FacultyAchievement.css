@@ -1,0 +1,339 @@
+/* ============================================================
+   Faculty Achievement Gallery
+   Main image top + four thumbnails below
+   ============================================================ */
+.faculty-achievement {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(72px, 9vw, 112px) 24px;
+  color: var(--text, #25324a);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(202, 107, 230, 0.1), transparent 30%),
+    radial-gradient(circle at 92% 88%, rgba(180, 135, 47, 0.12), transparent 32%),
+    var(--bg-secondary, #f6f8fb);
+}
+
+.faculty-achievement-container {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.fa-heading {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.fa-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--accent, #b4872f);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.fa-heading .section-title {
+  margin: 0;
+  color: var(--text-h, #172238);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.fa-subtitle {
+  max-width: 650px;
+  margin: 18px auto 0;
+  color: var(--text-muted, #66738a);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.fa-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  align-items: center;
+  gap: clamp(38px, 7vw, 86px);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Left gallery: large image on top, four images below */
+.fa-gallery {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fa-main-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(180, 135, 47, 0.3);
+  border-radius: 22px;
+  background: #e8edf3;
+  box-shadow: 0 22px 48px rgba(24, 39, 65, 0.16);
+}
+
+.fa-main-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  animation: fa-image-enter 0.35s ease both;
+}
+
+.fa-image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(10, 20, 38, 0.02) 45%, rgba(10, 20, 38, 0.5) 100%);
+}
+
+.fa-main-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, #ca6be6, #b4872f);
+  box-shadow: 0 8px 20px rgba(23, 34, 56, 0.2);
+}
+
+.fa-photo-count {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.fa-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.fa-thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  opacity: 0.62;
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.fa-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.fa-thumbnail:hover,
+.fa-thumbnail:focus-visible,
+.fa-thumbnail.is-active {
+  border-color: var(--accent, #b4872f);
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.fa-thumbnail:focus-visible {
+  outline: 3px solid rgba(202, 107, 230, 0.35);
+  outline-offset: 3px;
+}
+
+/* Right-side details */
+.fa-details {
+  min-width: 0;
+  padding: clamp(10px, 2vw, 22px) 0;
+}
+
+.fa-detail-label {
+  color: var(--accent, #b4872f);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.fa-name {
+  margin: 14px 0 8px;
+  color: var(--text-h, #172238);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.2rem, 4vw, 3.55rem);
+  line-height: 1.08;
+}
+
+.fa-designation {
+  margin: 0;
+  color: var(--accent, #b4872f);
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.fa-achievement-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 30px 0 24px;
+  padding: 18px;
+  border: 1px solid rgba(180, 135, 47, 0.28);
+  border-left: 3px solid var(--accent, #b4872f);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.fa-achievement-icon {
+  display: grid;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, #ca6be6, #b4872f);
+}
+
+.fa-achievement-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-muted, #66738a);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fa-achievement {
+  margin: 0;
+  color: var(--text-h, #172238);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.fa-description {
+  max-width: 500px;
+  margin: 0 0 28px;
+  color: var(--text-muted, #66738a);
+  line-height: 1.8;
+}
+
+.fa-next-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid var(--accent, #b4872f);
+  border-radius: 8px;
+  color: var(--text-h, #172238);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.fa-next-button:hover,
+.fa-next-button:focus-visible {
+  color: #fff;
+  background: var(--accent, #b4872f);
+  transform: translateY(-2px);
+}
+
+.fa-next-button:focus-visible {
+  outline: 3px solid rgba(202, 107, 230, 0.35);
+  outline-offset: 3px;
+}
+
+@keyframes fa-image-enter {
+  from {
+    opacity: 0.35;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 850px) {
+  .fa-showcase {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+  }
+
+  .fa-details {
+    padding: 0;
+    text-align: center;
+  }
+
+  .fa-description {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .fa-achievement-box {
+    max-width: 520px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  .faculty-achievement {
+    padding: 64px 16px;
+  }
+
+  .fa-heading {
+    margin-bottom: 34px;
+  }
+
+  .fa-main-image-wrapper {
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+  }
+
+  .fa-thumbnails {
+    gap: 8px;
+  }
+
+  .fa-thumbnail {
+    border-radius: 9px;
+  }
+
+  .fa-name {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-main-image,
+  .fa-thumbnail,
+  .fa-next-button {
+    animation: none;
+    transition: none;
+  }
+}

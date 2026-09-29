@@ -1,0 +1,229 @@
+/* =========================================================
+   CyberDefentech Top Header — Premium Utility Bar
+   Compatible with the updated TopHeader.jsx component
+========================================================= */
+
+.top-header,
+.top-header *,
+.top-header *::before,
+.top-header *::after {
+  box-sizing: border-box;
+}
+
+.top-header {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  min-height: 42px;
+  border-bottom: 1px solid rgba(180, 135, 47, 0.22);
+  background:
+    linear-gradient(90deg, rgba(202, 107, 230, 0.055), transparent 42%, rgba(180, 135, 47, 0.055)),
+    var(--bg-secondary, #17132d);
+  color: var(--text, #d9d9e5);
+  font-family: var(--sans, inherit);
+}
+
+/* Thin premium accent line */
+.top-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 5%;
+  left: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ca6be6, #b4872f, transparent);
+  opacity: 0.8;
+}
+
+.top-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(1240px, calc(100% - 48px));
+  min-height: 42px;
+  margin: 0 auto;
+}
+
+/* Contact details */
+.top-header-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  min-width: 0;
+}
+
+.top-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: #1f5ab8;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  line-height: 1.3;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.top-item:hover {
+  color: var(--text-h, #ffffff);
+  transform: translateY(-1px);
+}
+
+.top-icon {
+  flex: 0 0 auto;
+  color: #d5a94e;
+  font-size: 11px;
+  transition: color 180ms ease;
+}
+
+.top-item:hover .top-icon {
+  color: #ca6be6;
+}
+
+/* Small divider between contact items */
+.top-item + .top-item::before {
+  content: "";
+  width: 1px;
+  height: 13px;
+  margin-right: 15px;
+  background: rgba(180, 135, 47, 0.25);
+}
+
+/* Social links */
+.top-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  gap: 5px;
+}
+
+.top-header-right a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--text, #d9d9e5);
+  text-decoration: none;
+  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.top-header-right a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(202, 107, 230, 0.42);
+  background: linear-gradient(135deg, rgba(202, 107, 230, 0.18), rgba(180, 135, 47, 0.15));
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.16);
+}
+
+.social-icon {
+  display: block;
+  color: currentColor;
+  font-size: 12.5px;
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.top-header-right a:hover .social-icon {
+  color: #d5a94e;
+}
+
+.top-header a:focus-visible {
+  outline: 2px solid rgba(202, 107, 230, 0.70);
+  outline-offset: 3px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .top-header-inner {
+    width: min(100% - 32px, 720px);
+  }
+
+  .top-header-left {
+    gap: 8px 17px;
+  }
+
+  .top-item {
+    font-size: 11px;
+  }
+
+  .top-item + .top-item::before {
+    margin-right: 9px;
+  }
+
+  .top-header-left .top-item:first-child {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 620px) {
+  .top-header {
+    min-height: 0;
+    padding: 9px 0;
+  }
+
+  .top-header-inner {
+    flex-direction: column;
+    gap: 9px;
+    width: min(100% - 28px, 430px);
+  }
+
+  .top-header-left {
+    justify-content: center;
+    width: 100%;
+    gap: 7px 13px;
+  }
+
+  .top-item {
+    font-size: 10.5px;
+  }
+
+  .top-item + .top-item::before {
+    display: none;
+  }
+
+  .top-header-right {
+    gap: 6px;
+  }
+
+  .top-header-right a {
+    width: 29px;
+    height: 29px;
+    border-color: rgba(180, 135, 47, 0.17);
+  }
+}
+
+@media (max-width: 390px) {
+  .top-header-left {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .top-item:nth-child(2) {
+    display: none;
+  }
+
+  .top-item {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-header a,
+  .top-item,
+  .social-icon {
+    transition: none;
+  }
+
+  .top-header a:hover,
+  .top-item:hover {
+    transform: none;
+  }
+}
